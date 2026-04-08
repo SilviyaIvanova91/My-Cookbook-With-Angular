@@ -1,59 +1,16 @@
-<div class="container">
-  <h1>My Recipes</h1>
+<!-- Recipe Card -->
+<div class="card">
+  <img [src]="recipe.imageUrl" [alt]="recipe.name" />
+  <h2>{{ recipe.name }}</h2>
+  <p>{{ recipe.description }}</p>
 
-  <div class="recipes">
-    <!-- Recipe Card -->
-    <div class="card">
-      <img src="https://example.com/images/spaghetti-bolognese.jpg" alt="Spaghetti Bolognese" />
-      <h2>Spaghetti Bolognese</h2>
-      <p>A classic Italian pasta dish with rich meat sauce.</p>
+  <h3>Ingredients</h3>
+  <ul>
+    @for (ingredient of recipe.ingredients; track ingredient) {
+      <li>{{ ingredient }}</li>
+    }
+  </ul>
 
-      <h3>Ingredients</h3>
-      <ul>
-        <li>200g spaghetti</li>
-        <li>100g ground beef</li>
-        <li>1 onion</li>
-        <li>2 cloves garlic</li>
-      </ul>
-
-      <h3>Instructions</h3>
-      <p>Cook pasta, prepare sauce with beef, tomatoes, and spices. Simmer and serve.</p>
-    </div>
-
-    <!-- Recipe Card -->
-    <div class="card">
-      <img src="https://example.com/images/chicken-caesar-salad.jpg" alt="Chicken Caesar Salad" />
-      <h2>Chicken Caesar Salad</h2>
-      <p>Fresh salad with grilled chicken and Caesar dressing.</p>
-
-      <h3>Ingredients</h3>
-      <ul>
-        <li>Chicken breasts</li>
-        <li>Romaine lettuce</li>
-        <li>Parmesan</li>
-        <li>Croutons</li>
-      </ul>
-
-      <h3>Instructions</h3>
-      <p>Grill chicken, chop lettuce, combine ingredients, and toss with dressing.</p>
-    </div>
-
-    <!-- Recipe Card -->
-    <div class="card">
-      <img src="https://example.com/images/pancakes.jpg" alt="Pancakes" />
-      <h2>Pancakes</h2>
-      <p>Fluffy homemade pancakes perfect for breakfast.</p>
-
-      <h3>Ingredients</h3>
-      <ul>
-        <li>Flour</li>
-        <li>Milk</li>
-        <li>Egg</li>
-        <li>Butter</li>
-      </ul>
-
-      <h3>Instructions</h3>
-      <p>Mix ingredients, cook on pan, flip, and serve warm.</p>
-    </div>
-  </div>
+  <h3>Instructions</h3>
+  <p>{{ recipe.instructions }}</p>
 </div>
