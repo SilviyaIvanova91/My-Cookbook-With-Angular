@@ -1,7 +1,11 @@
-<main>
+<div class="recipes-list">
+  <div class="create-button">
+    <button class="create-recipe-btn"><span>➕</span>Create Recipe</button>
+  </div>
+  <h1 class="h-recipes">Recipes</h1>
   <div class="recipes">
     @for (recipe of recipes; track recipe._id) {
       <app-recipe [recipe]="recipe" />
     }
   </div>
-</main>
+</div>

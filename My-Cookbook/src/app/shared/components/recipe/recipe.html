@@ -3,14 +3,7 @@
   <img [src]="recipe.imageUrl" [alt]="recipe.name" />
   <h2>{{ recipe.name }}</h2>
   <p>{{ recipe.description }}</p>
-
-  <h3>Ingredients</h3>
-  <ul>
-    @for (ingredient of recipe.ingredients; track ingredient) {
-      <li>{{ ingredient }}</li>
-    }
-  </ul>
-
-  <h3>Instructions</h3>
-  <p>{{ recipe.instructions }}</p>
+  <div class="button-recipe">
+    <button class="recipe-button">Details</button>
+  </div>
 </div>

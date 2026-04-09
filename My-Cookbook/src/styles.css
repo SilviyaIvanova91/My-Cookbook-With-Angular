@@ -1,10 +1,12 @@
 @import url('styles/layout.css');
 
+/* App content */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: cursive;
 }
 
 body {
@@ -12,12 +14,15 @@ body {
   color: #fff;
 }
 
+/* Nav */
+
 .container {
   width: 90%;
   max-width: 1200px;
   margin: auto;
 }
 
+/* Home page */
 .hero {
   height: 100vh;
   background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836') no-repeat
@@ -40,8 +45,10 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   gap: 50px;
+  margin-top: 300px;
+  margin-bottom: 300px;
 }
 
 .text {
@@ -63,6 +70,160 @@ body {
   border-radius: 50%;
   border: 8px solid rgba(255, 255, 255, 0.1);
 }
+
+.image img {
+  animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Create Recipe Button */
+.create-recipe-btn {
+  margin: 20px 40px 20px 940px;
+  bottom: 20px;
+  right: 20px;
+  padding: 14px 26px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #ff7e5f, #ffb347);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(255, 126, 95, 0.4);
+  transition: all 0.3s ease;
+}
+
+.create-recipe-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(255, 126, 95, 0.6);
+}
+
+.create-recipe-btn:active {
+  transform: scale(0.95);
+}
+
+.create-recipe-btn span {
+  margin-right: 8px;
+}
+
+.h-recipes {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 40px;
+  font-family: cursive;
+}
+
+/* Recipes List */
+.recipes {
+  margin: 50px auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 340px;
+  height: 450px;
+  padding: 20px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.card p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.card h3 {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #222;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 5px;
+}
+
+.card ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.card li {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #444;
+}
+
+.button-recipe {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.recipe-button {
+  margin: 20px 0px 10px 180px;
+  padding: 11px;
+  display: inline-block;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: #261a33;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #ff6f01;
+  color: white;
+  text-align: center;
+}
+
+/* Responsive */
 
 @media (max-width: 900px) {
   .hero-content {
