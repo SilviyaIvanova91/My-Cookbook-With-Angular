@@ -1,0 +1,215 @@
+/* -- Page wrapper -- */
+.page-wrapper {
+  position: relative;
+  height: 750px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5e6dd;
+  overflow: hidden;
+  isolation: isolate;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+/* -- Diagonal light streaks -- */
+.streak {
+  position: absolute;
+  width: 60px;
+  height: 160%;
+  background: rgba(255, 255, 255, 0.18);
+  transform: rotate(30deg);
+  pointer-events: none;
+}
+.streak-1 {
+  left: 25%;
+  top: -30%;
+}
+.streak-2 {
+  left: 55%;
+  top: -30%;
+  width: 35px;
+}
+
+/* -- Scattered food decorations -- */
+.deco {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.6;
+  pointer-events: none;
+  user-select: none;
+  filter: sepia(0.4) saturate(0.7);
+}
+
+.deco-6 {
+  bottom: 22%;
+  left: 5%;
+  font-size: 2.4rem;
+}
+.deco-7 {
+  bottom: 8%;
+  left: 18%;
+  font-size: 2rem;
+}
+.deco-8 {
+  bottom: 4%;
+  left: 42%;
+  font-size: 1.8rem;
+}
+.deco-9 {
+  bottom: 10%;
+  right: 8%;
+  font-size: 2rem;
+}
+.deco-10 {
+  bottom: 28%;
+  right: 4%;
+  font-size: 1.7rem;
+}
+.deco-11 {
+  top: 42%;
+  left: 3%;
+  font-size: 2rem;
+}
+.deco-12 {
+  top: 38%;
+  right: 3%;
+  font-size: 2.4rem;
+}
+
+/* -- Card -- */
+.card {
+  position: relative;
+  z-index: 10;
+  background: rgba(247, 240, 235, 0.92);
+  border-radius: 18px;
+  padding: 10px;
+  width: 360px;
+  box-shadow: 0 12px 40px rgba(139, 94, 60, 0.18);
+}
+
+.card-inner {
+  border: 2px dashed #b08870;
+  border-radius: 12px;
+  padding: 40px 36px 32px;
+  text-align: center;
+}
+
+/* -- Brand title -- */
+.brand {
+  margin: 0 0 14px;
+  font-size: 2rem;
+  letter-spacing: 6px;
+  color: #7a4e2d;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+/* -- Divider lines -- */
+.divider-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.divider-lines span {
+  display: block;
+  height: 1.5px;
+  background: #b08870;
+  border-radius: 2px;
+}
+
+/* -- Subtitle -- */
+.subtitle {
+  font-size: 0.82rem;
+  color: #a07860;
+  letter-spacing: 1px;
+  margin: 0 0 24px;
+  text-transform: uppercase;
+}
+
+/* -- Floating label fields -- */
+.field {
+  position: relative;
+  margin-bottom: 22px;
+  text-align: left;
+}
+
+.field input {
+  width: 100%;
+  padding: 14px 0 6px;
+  border: none;
+  border-bottom: 1.5px solid #c9b4a4;
+  background: transparent;
+  outline: none;
+  font-size: 0.95rem;
+  color: #5a3a20;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color 0.25s;
+}
+
+.field input:focus {
+  border-bottom-color: #8b5e3c;
+}
+
+.field label {
+  position: absolute;
+  left: 0;
+  top: 14px;
+  font-size: 0.88rem;
+  color: #a07860;
+  pointer-events: none;
+  transition:
+    top 0.2s,
+    font-size 0.2s,
+    color 0.2s;
+}
+
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label {
+  top: -2px;
+  font-size: 0.72rem;
+  color: #8b5e3c;
+}
+
+/* -- Register button -- */
+form button {
+  margin-top: 8px;
+  width: 100%;
+  padding: 13px;
+  background: #c8956c;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 0.25s,
+    transform 0.2s;
+  box-shadow: 0 4px 14px rgba(176, 110, 60, 0.3);
+}
+
+form button:hover {
+  background: #a8704a;
+  transform: translateY(-2px);
+}
+
+/* -- Login link -- */
+.login-link {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: #a07860;
+}
+
+.login-link a {
+  color: #8b5e3c;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}

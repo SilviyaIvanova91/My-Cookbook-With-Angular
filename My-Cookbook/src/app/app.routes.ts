@@ -11,4 +11,10 @@ export const routes: Routes = [
     path: 'recipes',
     loadComponent: () => import('./features/recipes/reciepes').then((m) => m.Reciepes),
   },
+
+  {
+    path: 'register',
+    loadComponent: () =>
+      import('./features/auth/register/register').then((m) => m.RegisterComponent),
+  },
 ];
