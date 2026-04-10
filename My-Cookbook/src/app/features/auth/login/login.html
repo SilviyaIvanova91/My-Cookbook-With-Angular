@@ -1,0 +1,46 @@
+<div class="page-wrapper">
+  <!-- Login card -->
+  <div class="card">
+    <div class="card-inner">
+      <h1 class="brand">COOKBOOK</h1>
+      <div class="divider-lines">
+        <span></span>
+        <span></span>
+      </div>
+      <p class="subtitle">Login to your account</p>
+
+      <form class="register" (ngSubmit)="onLogin()">
+        <div class="field">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder=" "
+            [(ngModel)]="email"
+            required
+          />
+          <label for="email">Email</label>
+        </div>
+
+        <div class="field">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder=" "
+            [(ngModel)]="password"
+            required
+          />
+          <label for="password">Password</label>
+        </div>
+
+        @if (error) {
+          <p class="error-msg">{{ error }}</p>
+        }
+        <button type="submit">Login</button>
+      </form>
+
+      <p class="login-link">Don't have an account? <a routerLink="/register">Sign up</a></p>
+    </div>
+  </div>
+</div>

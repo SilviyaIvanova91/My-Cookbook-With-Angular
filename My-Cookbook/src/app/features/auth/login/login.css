@@ -1,0 +1,201 @@
+/* -- Page wrapper -- */
+.page-wrapper {
+  position: relative;
+  height: 750px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5e6dd;
+  /* Scattered food decorations as SVG background layers */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='42'%3E%3Ctext y='38' font-size='38' opacity='0.6'%3E%F0%9F%8D%B2%3C/text%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='36'%3E%3Ctext y='32' font-size='32' opacity='0.6'%3E%F0%9F%8D%84%3C/text%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='32'%3E%3Ctext y='28' font-size='28' opacity='0.6'%3E%F0%9F%A5%90%3C/text%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='36'%3E%3Ctext y='32' font-size='32' opacity='0.6'%3E%F0%9F%8D%A4%3C/text%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='30'%3E%3Ctext y='26' font-size='27' opacity='0.6'%3E%F0%9F%A7%80%3C/text%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='36'%3E%3Ctext y='32' font-size='32' opacity='0.6'%3E%F0%9F%8D%84%3C/text%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='42'%3E%3Ctext y='38' font-size='38' opacity='0.6'%3E%F0%9F%8D%B2%3C/text%3E%3C/svg%3E");
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-position:
+    5% 78%,
+    /* 🍲 bottom 22%, left 5% */ 18% 92%,
+    /* 🍄 bottom 8%,  left 18% */ 42% 96%,
+    /* 🥐 bottom 4%,  left 42% */ 92% 90%,
+    /* 🍤 bottom 10%, right 8% */ 96% 72%,
+    /* 🧀 bottom 28%, right 4% */ 3% 42%,
+    /* 🍄 top 42%,    left 3% */ 97% 38%; /* 🍲 top 38%,    right 3% */
+  background-size: 38px, 32px, 29px, 32px, 27px, 32px, 38px;
+  overflow: hidden;
+  isolation: isolate;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+/* -- Diagonal light streaks -- */
+.page-wrapper::before,
+.page-wrapper::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.18);
+  transform: rotate(30deg);
+  pointer-events: none;
+  top: -30%;
+  height: 160%;
+}
+.page-wrapper::before {
+  width: 60px;
+  left: 25%;
+}
+.page-wrapper::after {
+  width: 35px;
+  left: 55%;
+}
+
+/* -- Card -- */
+.card {
+  position: relative;
+  z-index: 10;
+  background: rgba(247, 240, 235, 0.92);
+  border-radius: 18px;
+  padding: 10px;
+  width: 360px;
+  box-shadow: 0 12px 40px rgba(139, 94, 60, 0.18);
+}
+
+.card-inner {
+  border: 2px dashed #b08870;
+  border-radius: 12px;
+  padding: 40px 36px 32px;
+  text-align: center;
+}
+
+/* -- Brand title -- */
+.brand {
+  margin: 0 0 14px;
+  font-size: 2rem;
+  letter-spacing: 6px;
+  color: #7a4e2d;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+/* -- Divider lines -- */
+.divider-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.divider-lines span {
+  display: block;
+  height: 1.5px;
+  background: #b08870;
+  border-radius: 2px;
+}
+
+/* -- Subtitle -- */
+.subtitle {
+  font-size: 0.82rem;
+  color: #a07860;
+  letter-spacing: 1px;
+  margin: 0 0 24px;
+  text-transform: uppercase;
+}
+
+/* -- Floating label fields -- */
+.field {
+  position: relative;
+  margin-bottom: 22px;
+  text-align: left;
+}
+
+.field input {
+  width: 100%;
+  padding: 14px 0 6px;
+  border: none;
+  border-bottom: 1.5px solid #c9b4a4;
+  background: transparent;
+  outline: none;
+  font-size: 0.95rem;
+  color: #5a3a20;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color 0.25s;
+}
+
+.field input:focus {
+  border-bottom-color: #8b5e3c;
+}
+
+.field label {
+  position: absolute;
+  left: 0;
+  top: 14px;
+  font-size: 0.88rem;
+  color: #a07860;
+  pointer-events: none;
+  transition:
+    top 0.2s,
+    font-size 0.2s,
+    color 0.2s;
+}
+
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label {
+  top: -2px;
+  font-size: 0.72rem;
+  color: #8b5e3c;
+}
+
+/* -- Register button -- */
+form button {
+  margin-top: 8px;
+  width: 100%;
+  padding: 13px;
+  background: #c8956c;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 0.25s,
+    transform 0.2s;
+  box-shadow: 0 4px 14px rgba(176, 110, 60, 0.3);
+}
+
+form button:hover {
+  background: #a8704a;
+  transform: translateY(-2px);
+}
+
+/* -- Login link -- */
+.login-link {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: #a07860;
+}
+
+.login-link a {
+  color: #8b5e3c;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* -- Error message -- */
+.error-msg {
+  margin: 10px 0 0;
+  font-size: 0.82rem;
+  color: #c0392b;
+  text-align: center;
+}
+
+a {
+  cursor: pointer;
+}
