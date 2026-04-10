@@ -2,15 +2,20 @@
 <header>
   <div class="container nav">
     <div class="logo">🍴 My Cookbook</div>
-
     <nav>
       <ul>
         <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
         <li><a routerLink="/recipes" routerLinkActive="active">Recipes</a></li>
-        <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
-        <li><a routerLink="/register" routerLinkActive="active">Register</a></li>
-        <li><a routerLink="/logout" routerLinkActive="active">Logout</a></li>
-        <li><a routerLink="/profile" routerLinkActive="active">My Profile</a></li>
+
+        @if (isLoggedIn()) {
+          <li>
+            <a routerLink="/profile" routerLinkActive="active">{{ username() }}'s Profile</a>
+          </li>
+          <li><a (click)="onLogout()" class="logout" routerLinkActive="active">Logout</a></li>
+        } @else {
+          <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+          <li><a routerLink="/register" routerLinkActive="active">Register</a></li>
+        }
       </ul>
     </nav>
   </div>
