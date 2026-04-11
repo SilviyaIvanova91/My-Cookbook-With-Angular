@@ -9,7 +9,14 @@ export const routes: Routes = [
 
   {
     path: 'recipes',
-    loadComponent: () => import('./features/recipes/reciepes').then((m) => m.Reciepes),
+    loadComponent: () => import('./features/recipes/reciepes').then((m) => m.ReciepesComponent),
+  },
+  {
+    path: 'recipes/:recipeId',
+    loadComponent: () =>
+      import('./features/recipes/recipes-detail/recipe-detail').then(
+        (m) => m.RecipeDetailComponent,
+      ),
   },
 
   {

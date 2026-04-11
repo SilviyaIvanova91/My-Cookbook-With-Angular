@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RecipesListComponent } from "./recipes-list/recipes-list";
+import { RecipesListComponent } from './recipes-list/recipes-list';
 
 @Component({
   selector: 'app-reciepes',
@@ -7,4 +7,4 @@ import { RecipesListComponent } from "./recipes-list/recipes-list";
   templateUrl: './reciepes.html',
   styleUrl: './reciepes.css',
 })
-export class Reciepes {}
+export class ReciepesComponent {}

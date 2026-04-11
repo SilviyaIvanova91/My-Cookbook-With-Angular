@@ -1,0 +1,41 @@
+@if (recipe) {
+  <div class="card">
+    <img [src]="recipe.imageUrl" [alt]="recipe.name" />
+    <h2>{{ recipe.name }}</h2>
+    <p>{{ recipe.description }}</p>
+
+    <h3>Ingredients</h3>
+    <ul>
+      @for (ingredient of recipe.ingredients; track ingredient) {
+        <li>{{ ingredient }}</li>
+      }
+    </ul>
+
+    <h3>Instructions</h3>
+    <p>{{ recipe.instructions }}</p>
+  </div>
+
+  <section class="comments">
+    <h3>Comments ({{ recipe.comments }})</h3>
+
+    @for (comment of recipe.comments; track comment._id) {
+      <div class="comment">
+        <strong>{{ comment.username }}</strong>
+        <p>{{ comment.text }}</p>
+      </div>
+    } @empty {
+      <p>No comments yet. Be the first!</p>
+    }
+
+    <form (ngSubmit)="postComment()">
+      <textarea
+        [(ngModel)]="commentText"
+        name="commentText"
+        placeholder="Write a comment..."
+        rows="3"
+        required
+      ></textarea>
+      <button type="submit" [disabled]="!commentText.trim()">Post Comment</button>
+    </form>
+  </section>
+}

@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Recipe } from '../../interfaces/recipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe',
@@ -8,5 +9,10 @@ import { Recipe } from '../../interfaces/recipe';
   styleUrl: './recipe.css',
 })
 export class RecipeComponent {
+  private router = inject(Router);
   @Input({ required: true }) recipe!: Recipe;
+
+  goToDetails(recipeId: string) {
+    this.router.navigate(['/recipes', recipeId]);
+  }
 }

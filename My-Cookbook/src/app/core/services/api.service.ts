@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Recipe } from '../../shared/interfaces/recipe';
+import { Comment } from '../../shared/interfaces/comments';
 import { User } from '../../shared/interfaces/user';
 
 @Injectable({
@@ -14,6 +15,18 @@ export class ApiService {
 
   getRecipes(): Observable<Recipe[]> {
     return this.http.get<Recipe[]>(`${this.apiUrl}/recipes`, this.options);
+  }
+
+  getRecipeById(recipeId: string): Observable<Recipe> {
+    return this.http.get<Recipe>(`${this.apiUrl}/recipes/${recipeId}`, this.options);
+  }
+
+  addComment(recipeId: string, comment: { username: string; text: string }): Observable<Comment> {
+    return this.http.post<Comment>(
+      `${this.apiUrl}/recipes/${recipeId}/comments`,
+      comment,
+      this.options,
+    );
   }
 
   register(data: { username: string; email: string; password: string }): Observable<User> {

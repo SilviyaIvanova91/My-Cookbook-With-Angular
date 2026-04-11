@@ -4,6 +4,6 @@
   <h2>{{ recipe.name }}</h2>
   <p>{{ recipe.description }}</p>
   <div class="button-recipe">
-    <button class="recipe-button">Details</button>
+    <button class="recipe-button" (click)="goToDetails(recipe._id)">Details</button>
   </div>
 </div>
