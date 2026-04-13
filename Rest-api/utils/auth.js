@@ -29,7 +29,9 @@ function auth(redirectUnauthenticated = true) {
                     next();
                     return;
                 }
-                if (['token expired', 'blacklisted token', 'jwt must be provided'].includes(err.message)) {
+                const isJwtError = err.name === 'JsonWebTokenError' || err.name === 'TokenExpiredError';
+
+                if (isJwtError || ['token expired', 'blacklisted token', 'jwt must be provided'].includes(err.message)) {
                     console.error(err);
                     res
                         .status(401)

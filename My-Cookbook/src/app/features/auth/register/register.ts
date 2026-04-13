@@ -18,7 +18,7 @@ export class RegisterComponent {
   password = '';
   confirmPass = '';
   error = '';
-  tel = '';
+  tel = 0;
 
   onRegister(): void {
     this.error = '';
@@ -45,6 +45,7 @@ export class RegisterComponent {
         username: this.username,
         email: this.email,
         password: this.password,
+        tel: this.tel.toString(),
       })
       .subscribe({
         next: () => this.router.navigate(['/recipes']),

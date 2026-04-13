@@ -1,0 +1,40 @@
+<main class="profile-card">
+  <div class="card">
+    <div class="header">
+      <div class="close-btn">×</div>
+    </div>
+
+    <div class="profile-img">
+      <img
+        src="https://img.freepik.com/free-vector/chef-with-crossed-arms-vector-flat-illustration-isolated-white-background_8130-3283.jpg?semt=ais_hybrid&w=740&q=80"
+        alt="profile"
+      />
+    </div>
+
+    @if (user(); as currentUser) {
+      <h2>{{ currentUser.username }}</h2>
+
+      <div class="info">
+        <div class="row">
+          <span>👤</span>
+          <p>{{ currentUser.username }}</p>
+        </div>
+        <div class="row">
+          <span>📱</span>
+          <p>{{ currentUser.tel || '-' }}</p>
+        </div>
+        <div class="row">
+          <span>✉️</span>
+          <p>{{ currentUser.email }}</p>
+        </div>
+        <div class="row">
+          <span>🔒</span>
+          <p>************</p>
+        </div>
+      </div>
+      <button class="btn edit">Edit Profile</button>
+      <button class="btn save">Save</button>
+      <button class="btn logout" (click)="onLogout()">Logout</button>
+    }
+  </div>
+</main>

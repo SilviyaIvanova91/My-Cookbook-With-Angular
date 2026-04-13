@@ -1,6 +1,7 @@
 import { Component, computed, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { ApiService } from '../../../core/services/api.service';
 import { AuthnService } from '../../../core/services/auth';
 import { Recipe } from '../../../shared/interfaces/recipe';
@@ -13,6 +14,7 @@ import { Recipe } from '../../../shared/interfaces/recipe';
 })
 export class RecipeDetailComponent implements OnInit {
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
   private apiService = inject(ApiService);
   private authService = inject(AuthnService);
 
@@ -28,8 +30,13 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   loadRecipe(): void {
-    this.apiService.getRecipeById(this.recipeId).subscribe((recipe) => {
-      this.recipe = recipe;
+    this.apiService.getRecipeById(this.recipeId).subscribe({
+      next: (recipe) => {
+        this.recipe = recipe;
+      },
+      error: () => {
+        this.router.navigate(['/not-found'], { queryParams: { from: 'invalid-recipe' } });
+      },
     });
   }
 

@@ -14,16 +14,25 @@ export class AuthnService {
   currentUser = computed(() => this.user());
 
   private loadSession(): User | null {
-    const stored = localStorage.getItem('currentUser');
+    const stored = sessionStorage.getItem('currentUser');
+
+    // Cleanup legacy persistent session to ensure tab-scoped authentication.
+    localStorage.removeItem('currentUser');
+
     return stored ? (JSON.parse(stored) as User) : null;
   }
 
   private saveSession(user: User): void {
-    localStorage.setItem('currentUser', JSON.stringify(user));
+    sessionStorage.setItem('currentUser', JSON.stringify(user));
     this.user.set(user);
   }
 
-  register(data: { username: string; email: string; password: string }): Observable<User> {
+  register(data: {
+    username: string;
+    email: string;
+    password: string;
+    tel: string;
+  }): Observable<User> {
     return this.apiService.register(data).pipe(tap((user) => this.saveSession(user)));
   }
 
@@ -34,6 +43,6 @@ export class AuthnService {
   logout(): void {
     this.apiService.logout().subscribe();
     this.user.set(null);
-    localStorage.removeItem('currentUser');
+    sessionStorage.removeItem('currentUser');
   }
 }

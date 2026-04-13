@@ -1,0 +1,73 @@
+.not-found {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5f1ed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  max-width: 900px;
+  padding: 20px;
+}
+
+.illustration img {
+  width: 300px;
+  max-width: 100%;
+}
+
+.content {
+  text-align: left;
+}
+
+.error-code {
+  font-size: 90px;
+  margin: 0;
+  color: #d08c60;
+  font-weight: bold;
+}
+
+.egg {
+  font-size: 70px;
+}
+
+.message {
+  font-size: 18px;
+  color: #777;
+  margin: 10px 0 25px;
+}
+
+.btn {
+  background: #d08c60;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #b8744d;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .content {
+    text-align: center;
+  }
+
+  .error-code {
+    font-size: 70px;
+  }
+}
