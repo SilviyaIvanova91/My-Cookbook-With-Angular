@@ -1,0 +1,130 @@
+<main class="new-recipe">
+  <form class="recipe-form" #recipeForm="ngForm" (ngSubmit)="onSubmit()">
+    <h2>Add New Recipe</h2>
+
+    <div class="form-group">
+      <label>Recipe Name</label>
+      <input
+        appInputError
+        type="text"
+        placeholder="Enter recipe name"
+        required
+        [(ngModel)]="name"
+        name="recipeName"
+        required
+        minlength="6"
+        #recipeName="ngModel"
+        [class.input-error]="recipeName.invalid && recipeName.touched"
+      />
+    </div>
+
+    @if (recipeName.touched && recipeName.errors?.['required']) {
+      <p class="error">Recipe name is required.</p>
+    }
+
+    @if (recipeName.touched && recipeName.errors?.['minlength']) {
+      <p class="error">Recipe name must be at least 6 characters long.</p>
+    }
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea
+        appInputError
+        placeholder="Short description..."
+        rows="3"
+        [(ngModel)]="description"
+        name="recipeDescription"
+        required
+        minlength="15"
+        #recipeDescription="ngModel"
+        [class.input-error]="recipeDescription.invalid && recipeDescription.touched"
+      ></textarea>
+    </div>
+
+    @if (recipeDescription.touched && recipeDescription.errors?.['required']) {
+      <p class="error">Description is required.</p>
+    }
+
+    @if (recipeDescription.touched && recipeDescription.errors?.['minlength']) {
+      <p class="error">Description must be at least 15 characters long.</p>
+    }
+
+    <div class="form-group">
+      <label>Image URL</label>
+      <input
+        appInputError
+        type="text"
+        placeholder="https://example.com/image.jpg"
+        [(ngModel)]="imageUrl"
+        name="imageUrl"
+        required
+        minlength="15"
+        #imageUrl="ngModel"
+        [class.input-error]="imageUrl.invalid && imageUrl.touched"
+      />
+    </div>
+
+    @if (imageUrl.touched && imageUrl.errors?.['required']) {
+      <p class="error">Image is required.</p>
+    }
+
+    <div class="form-group">
+      <label>Ingredients</label>
+      <textarea
+        appInputError
+        placeholder="Enter ingredients separated by commas (e.g. eggs, milk, flour)"
+        rows="3"
+        [(ngModel)]="ingredients"
+        name="recipeIngredients"
+        required
+        minlength="15"
+        #ingredients="ngModel"
+        [class.input-error]="ingredients.invalid && ingredients.touched"
+      ></textarea>
+    </div>
+
+    @if (ingredients.touched && ingredients.errors?.['required']) {
+      <p class="error">Ingredients are required.</p>
+    }
+
+    @if (ingredients.touched && ingredients.errors?.['minlength']) {
+      <p class="error">Please enter at least 2 ingredients.</p>
+    }
+
+    <div class="form-group">
+      <label>Instructions</label>
+      <textarea
+        appInputError
+        placeholder="Step-by-step instructions..."
+        rows="5"
+        [(ngModel)]="instructions"
+        name="recipeInstructions"
+        required
+        minlength="30"
+        #instructions="ngModel"
+        [class.input-error]="instructions.invalid && instructions.touched"
+      ></textarea>
+    </div>
+
+    @if (instructions.touched && instructions.errors?.['required']) {
+      <p class="error">Instructions are required.</p>
+    }
+
+    @if (instructions.touched && instructions.errors?.['minlength']) {
+      <p class="error">Instructions must be at least 30 characters long.</p>
+    }
+
+    @if (error) {
+      <p class="error" style="text-align: center">{{ error }}</p>
+    }
+
+    <div class="form-actions">
+      <button type="submit" class="btn-primary" [disabled]="recipeForm.invalid || isLoading">
+        {{ isLoading ? 'Saving...' : 'Save Recipe' }}
+      </button>
+      <button type="button" class="btn-secondary" (click)="onCancel()" [disabled]="isLoading">
+        Cancel
+      </button>
+    </div>
+  </form>
+</main>

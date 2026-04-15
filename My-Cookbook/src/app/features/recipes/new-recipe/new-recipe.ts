@@ -1,0 +1,72 @@
+import { Component, inject, ViewChild } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { InputErrorDirective } from '../../../shared/directives/input-error';
+import { ApiService } from '../../../core/services/api.service';
+
+@Component({
+  selector: 'app-new-recipe',
+  imports: [FormsModule, InputErrorDirective],
+  templateUrl: './new-recipe.html',
+  styleUrl: './new-recipe.css',
+})
+export class NewRecipeComponent {
+  @ViewChild('recipeForm') recipeForm!: NgForm;
+
+  name = '';
+  description = '';
+  ingredients = '';
+  instructions = '';
+  imageUrl = '';
+  isLoading = false;
+  error = '';
+
+  private router = inject(Router);
+  private apiService = inject(ApiService);
+
+  onSubmit() {
+    if (this.recipeForm.invalid) {
+      return;
+    }
+
+    this.isLoading = true;
+    this.error = '';
+
+    const newRecipe = {
+      _id: this.generateUniqueId(),
+      name: this.name,
+      description: this.description,
+      ingredients: this.ingredientsArray,
+      instructions: this.instructions,
+      imageUrl: this.imageUrl,
+    };
+
+    this.apiService.createRecipe(newRecipe).subscribe({
+      next: (recipe) => {
+        this.isLoading = false;
+        console.log(`Recipe created: ${recipe.name}`);
+        this.router.navigate(['/recipes']);
+      },
+      error: (err) => {
+        this.isLoading = false;
+        this.error = err.error?.message || 'Failed to create recipe. Please try again.';
+      },
+    });
+  }
+
+  onCancel() {
+    this.router.navigate(['/recipes']);
+  }
+
+  private generateUniqueId(): string {
+    return Math.random().toString(36).substring(2, 10);
+  }
+
+  get ingredientsArray(): string[] {
+    return this.ingredients.split(',').map((i) => i.trim());
+  }
+
+  hasMinIngredients(): boolean {
+    return this.ingredientsArray.length >= 2;
+  }
+}
