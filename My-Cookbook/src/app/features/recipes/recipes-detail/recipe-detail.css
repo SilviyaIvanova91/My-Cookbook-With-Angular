@@ -1,14 +1,11 @@
-/* General page styling */
-body {
+.recipe-details {
+  margin: 50px;
   font-family: Arial, sans-serif;
-  background: #f5f6fa;
-  margin: 0;
   padding: 20px;
 }
 
-/* Card container */
 .card {
-  width: 700px;
+  width: 550px;
   height: fit-content;
   display: flex;
   align-items: flex-start;
@@ -16,7 +13,7 @@ body {
   background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  padding: 50px;
+  padding: 20px;
   transition: transform 0.2s ease;
 }
 

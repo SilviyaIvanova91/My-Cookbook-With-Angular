@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Recipe } from '../../shared/interfaces/recipe';
+import { CreateRecipeData, Recipe } from '../../shared/interfaces/recipe';
 import { Comment } from '../../shared/interfaces/comments';
-import { User } from '../../shared/interfaces/user';
 
 @Injectable({
   providedIn: 'root',
@@ -11,37 +10,58 @@ import { User } from '../../shared/interfaces/user';
 export class ApiService {
   private http = inject(HttpClient);
   private apiUrl = 'http://localhost:3000/api';
-  private options = { withCredentials: true };
 
   getRecipes(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(`${this.apiUrl}/recipes`, this.options);
+    return this.http.get<Recipe[]>(`${this.apiUrl}/recipes`);
   }
 
   getRecipeById(recipeId: string): Observable<Recipe> {
-    return this.http.get<Recipe>(`${this.apiUrl}/recipes/${recipeId}`, this.options);
+    return this.http.get<Recipe>(`${this.apiUrl}/recipes/${recipeId}`);
   }
 
-  addComment(recipeId: string, comment: { username: string; text: string }): Observable<Comment> {
-    return this.http.post<Comment>(
-      `${this.apiUrl}/recipes/${recipeId}/comments`,
-      comment,
-      this.options,
+  createRecipe(data: CreateRecipeData): Observable<Recipe> {
+    return this.http.post<Recipe>(`${this.apiUrl}/recipes`, data, { withCredentials: true });
+  }
+
+  addComment(recipeId: string, comment: Comment): Observable<Comment> {
+    return this.http.post<Comment>(`${this.apiUrl}/recipes/${recipeId}/comments`, comment, {
+      withCredentials: true,
+    });
+  }
+
+  subscribeToRecipe(recipeId: string): Observable<Recipe> {
+    return this.http.put<Recipe>(
+      `${this.apiUrl}/recipes/${recipeId}`,
+      {},
+      { withCredentials: true },
     );
   }
 
-  register(data: { username: string; email: string; password: string }): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/register`, data, this.options);
-  }
+  // private http = inject(HttpClient);
+  // private apiUrl = 'http://localhost:3000/api';
+  // private options = { withCredentials: true };
 
-  login(data: { email: string; password: string }): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/login`, data, this.options);
-  }
+  // getRecipes(): Observable<Recipe[]> {
+  //   return this.http.get<Recipe[]>(`${this.apiUrl}/recipes`, this.options);
+  // }
 
-  logout(): Observable<void> {
-    return this.http.post<void>(`${this.apiUrl}/logout`, {}, this.options);
-  }
+  // getRecipeById(recipeId: string): Observable<Recipe> {
+  //   return this.http.get<Recipe>(`${this.apiUrl}/recipes/${recipeId}`, this.options);
+  // }
 
-  getProfile(): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}/users/profile`, this.options);
-  }
+  // register(data: { username: string; email: string; password: string }): Observable<User> {
+  //   return this.http.post<User>(`${this.apiUrl}/register`, data, this.options);
+  // }
+
+  // login(data: { email: string; password: string }): Observable<User> {
+  //   return this.http.post<User>(`${this.apiUrl}/login`, data, this.options);
+  // }
+
+  // logout(): Observable<void> {
+  //   return this.http.post<void>(`${this.apiUrl}/logout`, {}, this.options);
+  // }
+
+  // getProfile(): Observable<User> {
+  //   return this.http.get<User>(`${this.apiUrl}/users/profile`, this.options);
+  // }
 }

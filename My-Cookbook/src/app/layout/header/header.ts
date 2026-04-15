@@ -1,6 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { AuthnService } from '../../core/services/auth';
+import { AuthService } from '../../core/services/auth';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +9,7 @@ import { AuthnService } from '../../core/services/auth';
   styleUrl: './header.css',
 })
 export class HeaderComponent {
-  private authService = inject(AuthnService);
+  private authService = inject(AuthService);
   private router = inject(Router);
 
   isLoggedIn = this.authService.isLoggedIn;
@@ -17,7 +17,15 @@ export class HeaderComponent {
   username = computed(() => this.authService.currentUser()?.username ?? '');
 
   onLogout(): void {
-    this.authService.logout();
-    this.router.navigate(['/home']);
+    this.authService.logout().subscribe({
+      next: () => {
+        this.authService.clearSession();
+        this.router.navigate(['/home']);
+      },
+      error: () => {
+        this.authService.clearSession();
+        this.router.navigate(['/home']);
+      },
+    });
   }
 }

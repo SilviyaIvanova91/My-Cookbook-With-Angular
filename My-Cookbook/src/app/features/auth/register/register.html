@@ -9,18 +9,27 @@
       </div>
       <p class="subtitle">Create your account</p>
 
-      <form class="register" (ngSubmit)="onRegister()">
+      <form class="register" [formGroup]="registerForm" (ngSubmit)="onRegister()">
         <div class="field">
           <input
             type="text"
             id="username"
             name="username"
             placeholder=" "
-            [(ngModel)]="username"
+            formControlName="username"
             required
           />
           <label for="username">Username</label>
         </div>
+
+        @if (registerForm.get('username')?.touched && registerForm.get('username')?.invalid) {
+          @if (registerForm.get('username')?.errors?.['required']) {
+            <p class="error">Username is required!</p>
+          }
+          @if (registerForm.get('username')?.errors?.['minLength']) {
+            <p class="error">Username must be at least 3 characters long.</p>
+          }
+        }
 
         <div class="field">
           <input
@@ -28,11 +37,15 @@
             id="email"
             name="email"
             placeholder=" "
-            [(ngModel)]="email"
+            formControlName="email"
             required
           />
           <label for="email">Email</label>
         </div>
+
+        @if (registerForm.get('email')?.touched && registerForm.get('email')?.invalid) {
+          <p class="error">Email is not valid!</p>
+        }
 
         <div class="field">
           <input
@@ -40,11 +53,16 @@
             id="password"
             name="password"
             placeholder=" "
-            [(ngModel)]="password"
+            formControlName="password"
+            [class.input-error]="passwordsGroup.invalid && passwordsGroup.touched"
             required
           />
           <label for="password">Password</label>
         </div>
+
+        @if (passwordsGroup.get('password')?.touched && passwordsGroup.get('password')?.invalid) {
+          <p class="error">Password must be at least 5 characters!</p>
+        }
 
         <div class="field">
           <input
@@ -52,13 +70,26 @@
             id="confirmPass"
             name="confirmPass"
             placeholder=" "
-            [(ngModel)]="confirmPass"
-            required
+            formControlName="confirmPass"
+            [class.input-error]="passwordsGroup.invalid && passwordsGroup.touched"
           />
           <label for="confirmPass">Confirm Password</label>
+          @if (passwordsGroup.touched && passwordsGroup.errors?.['passwordMismatch']) {
+            <p class="error">Passwords do not match!</p>
+          }
         </div>
 
-        <button type="submit">Register</button>
+        @if (registerForm.invalid && registerForm.touched) {
+          <p class="error">You can't continue until you provide valid data!</p>
+        }
+
+        @if (error) {
+          <p class="error">{{ error }}</p>
+        }
+
+        <button type="submit" [disabled]="registerForm.invalid || isLoading">
+          {{ isLoading ? 'Registering...' : 'Register' }}
+        </button>
       </form>
 
       @if (error) {

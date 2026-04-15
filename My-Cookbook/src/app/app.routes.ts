@@ -19,6 +19,11 @@ export const routes: Routes = [
         (m) => m.RecipeDetailComponent,
       ),
   },
+  {
+    path: 'new-recipe',
+    loadComponent: () =>
+      import('./features/recipes/new-recipe/new-recipe').then((m) => m.NewRecipeComponent),
+  },
 
   {
     path: 'register',

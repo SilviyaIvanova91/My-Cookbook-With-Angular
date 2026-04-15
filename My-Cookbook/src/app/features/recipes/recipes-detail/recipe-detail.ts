@@ -3,8 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { ApiService } from '../../../core/services/api.service';
-import { AuthnService } from '../../../core/services/auth';
+import { AuthService } from '../../../core/services/auth';
 import { Recipe } from '../../../shared/interfaces/recipe';
+import { Comment } from '../../../shared/interfaces/comments';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -16,7 +17,7 @@ export class RecipeDetailComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private apiService = inject(ApiService);
-  private authService = inject(AuthnService);
+  private authService = inject(AuthService);
 
   recipe!: Recipe;
   commentText = '';
@@ -44,7 +45,7 @@ export class RecipeDetailComponent implements OnInit {
     const text = this.commentText.trim();
     if (!text || !this.recipe) return;
 
-    const comment = { username: this.currentUsername(), text };
+    const comment: Comment = { username: this.currentUsername(), text };
     this.apiService.addComment(this.recipeId, comment).subscribe((newComment) => {
       this.recipe!.comments.push(newComment);
       this.commentText = '';

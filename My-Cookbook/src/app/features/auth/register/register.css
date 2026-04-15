@@ -196,6 +196,11 @@ form button:hover {
   text-align: center;
 }
 
+.input-error {
+  border-color: var(--color-danger) !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+}
+
 a {
   cursor: pointer;
 }

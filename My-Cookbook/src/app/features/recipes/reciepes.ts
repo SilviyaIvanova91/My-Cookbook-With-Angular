@@ -7,4 +7,5 @@ import { RecipesListComponent } from './recipes-list/recipes-list';
   templateUrl: './reciepes.html',
   styleUrl: './reciepes.css',
 })
+
 export class ReciepesComponent {}

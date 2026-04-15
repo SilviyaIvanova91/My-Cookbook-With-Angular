@@ -9,35 +9,52 @@
       </div>
       <p class="subtitle">Login to your account</p>
 
-      <form class="register" (ngSubmit)="onLogin()">
+      <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
         <div class="field">
           <input
+            appInputError
             type="email"
             id="email"
             name="email"
             placeholder=" "
-            [(ngModel)]="email"
+            formControlName="email"
             required
           />
           <label for="email">Email</label>
         </div>
 
+        @if (loginForm.get('email')?.touched && loginForm.get('email')?.invalid) {
+          <p class="error-msg">Email is not valid!</p>
+        }
+
         <div class="field">
           <input
+            appInputError
             type="password"
             id="password"
             name="password"
             placeholder=" "
-            [(ngModel)]="password"
+            formControlName="password"
             required
           />
           <label for="password">Password</label>
         </div>
 
+        @if (loginForm.get('password')?.touched && loginForm.get('password')?.invalid) {
+          <p class="error-msg">Password is not valid!</p>
+        }
+
+        @if (loginForm.invalid && loginForm.touched) {
+          <p class="error-msg">You can't continue until you provide valid data!</p>
+        }
+
         @if (error) {
           <p class="error-msg">{{ error }}</p>
         }
-        <button type="submit">Login</button>
+
+        <button type="submit" [disabled]="loginForm.invalid || isLoading">
+          {{ isLoading ? 'Logging in...' : 'Login' }}
+        </button>
       </form>
 
       <p class="login-link">Don't have an account? <a routerLink="/register">Sign up</a></p>

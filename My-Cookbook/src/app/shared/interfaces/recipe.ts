@@ -10,3 +10,12 @@ export interface Recipe {
   comments: Comment[];
   likes: number;
 }
+
+export interface CreateRecipeData {
+  _id: string;
+  name: string;
+  description: string;
+  ingredients: string[];
+  instructions: string;
+  imageUrl: string;
+}
