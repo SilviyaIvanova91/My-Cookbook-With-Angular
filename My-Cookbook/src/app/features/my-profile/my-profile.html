@@ -15,26 +15,73 @@
       <h2>{{ currentUser.username }}</h2>
 
       <div class="info">
-        <div class="row">
-          <span>👤</span>
-          <p>{{ currentUser.username }}</p>
-        </div>
-        <div class="row">
-          <span>📱</span>
-          <p>{{ currentUser.tel || '-' }}</p>
-        </div>
-        <div class="row">
-          <span>✉️</span>
-          <p>{{ currentUser.email }}</p>
-        </div>
-        <div class="row">
-          <span>🔒</span>
-          <p>************</p>
-        </div>
+        @if (!isEditMode()) {
+          <div class="row">
+            <span>👤</span>
+            <p>{{ currentUser.username }}</p>
+          </div>
+          <div class="row">
+            <span>📱</span>
+            <p>{{ currentUser.tel || '-' }}</p>
+          </div>
+          <div class="row">
+            <span>✉️</span>
+            <p>{{ currentUser.email }}</p>
+          </div>
+          <button class="btn edit" (click)="editMode()">Edit Profile</button>
+          <button class="btn logout" (click)="onLogout()">Logout</button>
+        } @else {
+          <form #profileForm="ngForm">
+            <div class="row">
+              <span>👤</span>
+              <input
+                appInputError
+                type="text"
+                name="username"
+                [(ngModel)]="editUsername"
+                required
+                minlength="3"
+                #usernameCtrl="ngModel"
+                [class.input-error]="usernameCtrl.invalid && usernameCtrl.touched"
+              />
+            </div>
+
+            @if (usernameCtrl.touched && usernameCtrl.invalid) {
+              <p class="error edit-error">Username must be at least 3 characters!</p>
+            }
+
+            <div class="row">
+              <span>📱</span>
+              <input appInputError type="text" name="tel" [(ngModel)]="editTel" />
+            </div>
+
+            <div class="row">
+              <span>✉️</span>
+              <input
+                appInputError
+                appEmailValidator
+                type="email"
+                name="email"
+                [(ngModel)]="editEmail"
+                required
+                #emailCtrl="ngModel"
+                [class.input-error]="emailCtrl.invalid && emailCtrl.touched"
+              />
+            </div>
+
+            @if (emailCtrl.touched && emailCtrl.invalid) {
+              <p class="error edit-error">Email is not valid!</p>
+            }
+
+            @if (error()) {
+              <p class="error edit-error">{{ error() }}</p>
+            }
+
+            <button class="btn save" (click)="onSave()">Save</button>
+            <button class="btn cancel" (click)="onCancel()">Cancel</button>
+          </form>
+        }
       </div>
-      <button class="btn edit">Edit Profile</button>
-      <button class="btn save">Save</button>
-      <button class="btn logout" (click)="onLogout()">Logout</button>
     }
   </div>
 </main>

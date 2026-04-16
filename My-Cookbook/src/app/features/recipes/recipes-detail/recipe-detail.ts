@@ -47,7 +47,10 @@ export class RecipeDetailComponent implements OnInit {
 
     const comment: Comment = { username: this.currentUsername(), text };
     this.apiService.addComment(this.recipeId, comment).subscribe((newComment) => {
-      this.recipe!.comments.push(newComment);
+      if (!this.recipe.comments) {
+        this.recipe.comments = [];
+      }
+      this.recipe.comments.push(newComment);
       this.commentText = '';
     });
   }

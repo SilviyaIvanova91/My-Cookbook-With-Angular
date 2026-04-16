@@ -56,7 +56,7 @@ export class RegisterComponent {
     const userData = {
       username,
       email,
-      tel: tel ? '+359' + tel : undefined,
+      tel: tel ? tel : undefined,
       password: passwords.password,
     };
 

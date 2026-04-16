@@ -24,6 +24,25 @@ function getRecipeById(req, res, next) {
     .catch(next);
 }
 
+function createRecipe(req, res, next) {
+  const { name, description, ingredients, instructions, imageUrl } = req.body;
+
+  if (!name || !description || !instructions || !imageUrl) {
+    return res.status(400).json({ message: "All recipe fields are required" });
+  }
+
+  recipeModel
+    .create({
+      name,
+      description,
+      ingredients,
+      instructions,
+      imageUrl,
+    })
+    .then((recipe) => res.status(201).json(recipe))
+    .catch(next);
+}
+
 function addComment(req, res, next) {
   const { recipeId } = req.params;
   const { username, text } = req.body;
@@ -36,7 +55,7 @@ function addComment(req, res, next) {
     .findByIdAndUpdate(
       recipeId,
       { $push: { comments: { username, text } } },
-      { new: true }
+      { new: true },
     )
     .then((recipe) => {
       if (!recipe) {
@@ -52,4 +71,5 @@ module.exports = {
   getRecipes,
   getRecipeById,
   addComment,
+  createRecipe,
 };

@@ -65,6 +65,13 @@ h2 {
 .row p {
   margin: 0;
   color: #555;
+  border: none;
+}
+
+.row input {
+  margin: 0;
+  color: #555;
+  border: none;
 }
 
 .btn {

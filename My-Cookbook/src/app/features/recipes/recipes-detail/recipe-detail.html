@@ -6,11 +6,8 @@
       <p>{{ recipe.description }}</p>
 
       <h3>Ingredients</h3>
-      <ul>
-        @for (ingredient of recipe.ingredients; track ingredient) {
-          <li>{{ ingredient }}</li>
-        }
-      </ul>
+
+      <p>{{ recipe.ingredients }}</p>
 
       <h3>Instructions</h3>
       <p>{{ recipe.instructions }}</p>
