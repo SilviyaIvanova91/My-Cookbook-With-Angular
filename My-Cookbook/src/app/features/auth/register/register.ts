@@ -10,6 +10,7 @@ import {
 } from '@angular/forms';
 import { passwordsMatchValidator } from '../../../shared/validators/password-match.validator';
 import { emailValidator } from '../../../shared/validators/email.validator';
+import { NotificationService } from '../../../core/services/notification';
 
 @Component({
   selector: 'app-register',
@@ -19,6 +20,7 @@ import { emailValidator } from '../../../shared/validators/email.validator';
 })
 export class RegisterComponent {
   private authService = inject(AuthService);
+  private notificationService = inject(NotificationService);
   private router = inject(Router);
   private fb = inject(FormBuilder);
 
@@ -36,7 +38,6 @@ export class RegisterComponent {
   });
 
   isLoading = false;
-  error = '';
 
   get passwordsGroup(): FormGroup {
     return this.registerForm.get('passwords') as FormGroup;
@@ -49,7 +50,6 @@ export class RegisterComponent {
     }
 
     this.isLoading = true;
-    this.error = '';
 
     const { username, email, tel, passwords } = this.registerForm.value;
 
@@ -64,52 +64,13 @@ export class RegisterComponent {
       next: (user) => {
         this.authService.setSession(user);
         this.isLoading = false;
+        this.notificationService.showSuccess('Registration successful!');
         this.router.navigate(['/recipes']);
       },
       error: (err) => {
         this.isLoading = false;
-        this.error = err.error?.message || 'Registration failed. Try again';
+        this.notificationService.showError(err.error?.message || 'Registration failed. Try again');
       },
     });
   }
-  // private authService = inject(AuthnService);
-  // private router = inject(Router);
-  // username = '';
-  // email = '';
-  // password = '';
-  // confirmPass = '';
-  // error = '';
-  // tel = 0;
-  // onRegister(): void {
-  //   this.error = '';
-  //   if (!this.username) {
-  //     this.error = 'Username is required';
-  //     return;
-  //   }
-  //   if (!this.email) {
-  //     this.error = 'Email is required';
-  //     return;
-  //   }
-  //   if (!this.password) {
-  //     this.error = 'Password is required';
-  //     return;
-  //   }
-  //   if (this.password !== this.confirmPass) {
-  //     this.error = "Passwords don't match";
-  //     return;
-  //   }
-  //   this.authService
-  //     .register({
-  //       username: this.username,
-  //       email: this.email,
-  //       password: this.password,
-  //       tel: this.tel.toString(),
-  //     })
-  //     .subscribe({
-  //       next: () => this.router.navigate(['/recipes']),
-  //       error: (err) => {
-  //         this.error = err.error?.message || 'Registration failed. Please try again.';
-  //       },
-  //     });
-  // }
 }

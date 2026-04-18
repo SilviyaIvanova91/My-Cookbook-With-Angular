@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
 import { InputErrorDirective } from '../../shared/directives/input-error';
 import { EmailValidatorDirective } from '../../shared/directives/email-validator';
+import { NotificationService } from '../../core/services/notification';
 
 @Component({
   selector: 'app-my-profile',
@@ -16,11 +17,11 @@ export class MyProfileComponent {
 
   private authService = inject(AuthService);
   private router = inject(Router);
+  private notificationService = inject(NotificationService);
 
   user = this.authService.currentUser;
   isEditMode = signal(false);
   isLoading = signal(false);
-  error = signal('');
 
   editUsername = '';
   editEmail = '';
@@ -42,12 +43,12 @@ export class MyProfileComponent {
       this.editEmail = currentUser.email;
       this.editTel = currentUser.tel?.replace('+359', '') || '';
     }
-    this.error.set('');
+    this.notificationService.showSuccess('You can edit your profile now');
     this.isEditMode.set(true);
   }
 
   onCancel(): void {
-    this.error.set('');
+    this.notificationService.showError('Your changes have been discarded');
     this.isEditMode.set(false);
   }
 
@@ -57,7 +58,7 @@ export class MyProfileComponent {
     }
 
     this.isLoading.set(true);
-    this.error.set('');
+    this.notificationService.showSuccess('Saving profile successfully');
 
     const updateData = {
       username: this.editUsername,
@@ -73,7 +74,7 @@ export class MyProfileComponent {
       },
       error: (err) => {
         this.isLoading.set(false);
-        this.error.set(err.error?.message || 'Failed to update profile');
+        this.notificationService.showError(err.error?.message || 'Failed to update profile');
       },
     });
   }
@@ -82,10 +83,12 @@ export class MyProfileComponent {
     this.authService.logout().subscribe({
       next: () => {
         this.authService.clearSession();
+        this.notificationService.showSuccess('Logged out successfully');
         this.router.navigate(['/home']);
       },
       error: () => {
         this.authService.clearSession();
+        this.notificationService.showError('Failed to log out');
         this.router.navigate(['/home']);
       },
     });

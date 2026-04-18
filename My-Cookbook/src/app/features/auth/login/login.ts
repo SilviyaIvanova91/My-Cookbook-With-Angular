@@ -10,6 +10,7 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/auth';
 import { InputErrorDirective } from '../../../shared/directives/input-error';
 import { emailValidator } from '../../../shared/validators/email.validator';
+import { NotificationService } from '../../../core/services/notification';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,7 @@ export class LoginComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
   private fb = inject(FormBuilder);
+  private notificationService = inject(NotificationService);
 
   loginForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, emailValidator()]],
@@ -28,7 +30,6 @@ export class LoginComponent {
   });
 
   isLoading = false;
-  error = '';
 
   onLogin(): void {
     if (this.loginForm.invalid) {
@@ -37,7 +38,6 @@ export class LoginComponent {
     }
 
     this.isLoading = true;
-    this.error = '';
 
     const { email, password } = this.loginForm.value;
 
@@ -45,11 +45,12 @@ export class LoginComponent {
       next: (user) => {
         this.authService.setSession(user);
         this.isLoading = false;
+        this.notificationService.showSuccess('Login successful!');
         this.router.navigate(['/recipes']);
       },
       error: (err) => {
         this.isLoading = false;
-        this.error = err.error?.message || 'Login failed. Please try again.';
+        this.notificationService.showError(err.error?.message || 'Login failed. Please try again.');
       },
     });
   }

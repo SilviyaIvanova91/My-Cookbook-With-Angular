@@ -19,4 +19,14 @@
       </ul>
     </nav>
   </div>
+
+  @if (notification()) {
+    <div
+      class="notification"
+      [class.error-message]="notification()?.type === 'error'"
+      [class.success-message]="notification()?.type === 'success'"
+    >
+      {{ notification()?.message }}
+    </div>
+  }
 </header>

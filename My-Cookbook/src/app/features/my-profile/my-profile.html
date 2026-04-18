@@ -73,10 +73,6 @@
               <p class="error edit-error">Email is not valid!</p>
             }
 
-            @if (error()) {
-              <p class="error edit-error">{{ error() }}</p>
-            }
-
             <button class="btn save" (click)="onSave()">Save</button>
             <button class="btn cancel" (click)="onCancel()">Cancel</button>
           </form>

@@ -3,6 +3,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { InputErrorDirective } from '../../../shared/directives/input-error';
 import { ApiService } from '../../../core/services/api.service';
+import { NotificationService } from '../../../core/services/notification';
 
 @Component({
   selector: 'app-new-recipe',
@@ -19,10 +20,10 @@ export class NewRecipeComponent {
   instructions = '';
   imageUrl = '';
   isLoading = false;
-  error = '';
 
   private router = inject(Router);
   private apiService = inject(ApiService);
+  private notificationService = inject(NotificationService);
 
   onSubmit() {
     if (this.recipeForm.invalid) {
@@ -30,7 +31,6 @@ export class NewRecipeComponent {
     }
 
     this.isLoading = true;
-    this.error = '';
 
     const newRecipe = {
       _id: this.generateUniqueId(),
@@ -45,16 +45,20 @@ export class NewRecipeComponent {
       next: (recipe) => {
         this.isLoading = false;
         console.log(`Recipe created: ${recipe.name}`);
+        this.notificationService.showSuccess('Recipe created successfully!');
         this.router.navigate(['/recipes']);
       },
       error: (err) => {
         this.isLoading = false;
-        this.error = err.error?.message || 'Failed to create recipe. Please try again.';
+        this.notificationService.showError(
+          err.error?.message || 'Failed to create recipe. Please try again.',
+        );
       },
     });
   }
 
   onCancel() {
+    this.notificationService.showError('Create mode cancelled');
     this.router.navigate(['/recipes']);
   }
 

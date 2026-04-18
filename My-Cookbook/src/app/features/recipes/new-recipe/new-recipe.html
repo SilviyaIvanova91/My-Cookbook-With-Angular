@@ -117,10 +117,6 @@
       <p class="error">Instructions must be at least 30 characters long.</p>
     }
 
-    @if (error) {
-      <p class="error" style="text-align: center">{{ error }}</p>
-    }
-
     <div class="form-actions">
       <button type="submit" class="btn-primary" [disabled]="recipeForm.invalid || isLoading">
         {{ isLoading ? 'Saving...' : 'Save Recipe' }}

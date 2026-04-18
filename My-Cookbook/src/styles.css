@@ -1,7 +1,5 @@
 @import url('styles/layout.css');
 
-/* App content */
-
 * {
   margin: 0;
   padding: 0;
@@ -14,15 +12,12 @@ body {
   color: #fff;
 }
 
-/* Nav */
-
 .container {
   width: 90%;
   max-width: 1200px;
   margin: auto;
 }
 
-/* Home page */
 .hero {
   height: 100vh;
   background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836') no-repeat
@@ -84,7 +79,6 @@ body {
   }
 }
 
-/* Create Recipe Button */
 .create-recipe-btn {
   margin: 20px 40px 20px 940px;
   bottom: 20px;
@@ -121,7 +115,6 @@ body {
   font-family: cursive;
 }
 
-/* Recipes List */
 .recipes {
   margin: 50px auto;
   display: flex;
@@ -212,7 +205,6 @@ body {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Footer */
 .footer {
   position: fixed;
   left: 0;
@@ -223,8 +215,6 @@ body {
   text-align: center;
 }
 
-/* Responsive */
-
 @media (max-width: 900px) {
   .hero-content {
     flex-direction: column;
@@ -233,5 +223,50 @@ body {
 
   .image img {
     width: 300px;
+  }
+}
+
+.notification {
+  width: 100%;
+  text-align: center;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  z-index: 1000;
+  animation: slideDown 0.3s ease;
+}
+
+.success-message {
+  background-color: #88ccf1;
+  color: #1e2b7e;
+  border-bottom: 2px solid #4128a7;
+}
+
+.error-message {
+  background-color: #fdecea;
+  color: #a71d2a;
+  border-bottom: 2px solid #dc3545;
+}
+
+.notification {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .notification {
+    font-size: 13px;
+    padding: 10px;
   }
 }
