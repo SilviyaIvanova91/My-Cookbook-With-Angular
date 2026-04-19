@@ -7,6 +7,7 @@ export interface Recipe {
   ingredients: string;
   instructions: string;
   imageUrl: string;
+  owner: string;
   comments?: Comment[];
   likes?: number;
 }

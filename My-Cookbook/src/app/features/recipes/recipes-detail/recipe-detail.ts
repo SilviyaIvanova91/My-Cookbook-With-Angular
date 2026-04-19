@@ -42,7 +42,28 @@ export class RecipeDetailComponent implements OnInit {
     });
   }
 
+  isRecipeOwner(): boolean {
+    const currentUser = this.authService.currentUser();
+    if (!currentUser || !this.recipe) {
+      return false;
+    }
+
+    return this.recipe.owner === currentUser._id;
+  }
+
+  goToEditMode(recipeId: string): void {
+    if (!this.isRecipeOwner()) {
+      return;
+    }
+
+    this.router.navigate([`recipes/${recipeId}/edit`]);
+  }
+
   onDelete(): void {
+    if (!this.isRecipeOwner()) {
+      return;
+    }
+
     this.apiService.deleteRecipe(this.recipeId).subscribe({
       next: () => {
         this.router.navigate(['/recipes'], { queryParams: { deleted: 'true' } });

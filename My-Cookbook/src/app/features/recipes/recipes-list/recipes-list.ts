@@ -3,6 +3,7 @@ import { Recipe } from '../../../shared/interfaces/recipe';
 import { ApiService } from '../../../core/services/api.service';
 import { RecipeComponent } from '../../../shared/components/recipe/recipe';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../../core/services/auth';
 
 @Component({
   selector: 'app-recipes-list',
@@ -11,7 +12,10 @@ import { RouterLink } from '@angular/router';
   styleUrl: './recipes-list.css',
 })
 export class RecipesListComponent implements OnInit {
+  private authService = inject(AuthService);
+
   recipes: Recipe[] = [];
+  user = this.authService.isLoggedIn() ? this.authService.currentUser() : null;
 
   constructor(private apiService: ApiService) {}
 

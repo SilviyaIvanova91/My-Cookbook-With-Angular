@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema.Types;
 
 const recipeSchema = new mongoose.Schema(
   {
@@ -20,6 +21,11 @@ const recipeSchema = new mongoose.Schema(
     },
     imageUrl: {
       type: String,
+      required: true,
+    },
+    owner: {
+      type: ObjectId,
+      ref: "User",
       required: true,
     },
     comments: [

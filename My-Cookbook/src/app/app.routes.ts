@@ -23,6 +23,13 @@ export const routes: Routes = [
     path: 'new-recipe',
     loadComponent: () =>
       import('./features/recipes/new-recipe/new-recipe').then((m) => m.NewRecipeComponent),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'recipes/:recipeId/edit',
+    loadComponent: () =>
+      import('./features/recipes/edit-recipe/edit-recipe').then((m) => m.EditRecipeComponent),
+    canActivate: [authGuard],
   },
 
   {
