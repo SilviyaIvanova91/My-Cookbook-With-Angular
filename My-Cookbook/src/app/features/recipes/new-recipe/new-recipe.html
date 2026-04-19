@@ -35,7 +35,6 @@
         [(ngModel)]="description"
         name="recipeDescription"
         minlength="15"
-        maxlength="100"
         #recipeDescription="ngModel"
         [class.input-error]="recipeDescription.invalid && recipeDescription.touched"
       ></textarea>
@@ -47,10 +46,6 @@
 
     @if (recipeDescription.touched && recipeDescription.errors?.['minlength']) {
       <p class="error">Description must be at least 15 characters long.</p>
-    }
-
-    @if (recipeDescription.touched && recipeDescription.errors?.['maxlength']) {
-      <p class="error">Description cannot exceed 100 characters.</p>
     }
 
     <div class="form-group">

@@ -33,7 +33,7 @@ export class RegisterComponent {
         password: ['', [Validators.required, Validators.minLength(5)]],
         confirmPass: ['', [Validators.required]],
       },
-      { validators: passwordsMatchValidator },
+      { Validators: passwordsMatchValidator },
     ),
   });
 

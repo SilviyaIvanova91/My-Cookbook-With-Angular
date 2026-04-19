@@ -2,7 +2,7 @@
 <div class="card">
   <img [src]="recipe.imageUrl" [alt]="recipe.name" />
   <h2>{{ recipe.name }}</h2>
-  <p>{{ recipe.description }}</p>
+  <p>{{ recipe.description | descriptionSlice }}</p>
   <div class="button-recipe">
     <button class="recipe-button" (click)="goToDetails(recipe._id)">Details</button>
   </div>

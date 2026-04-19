@@ -1,10 +1,11 @@
 import { Component, inject, Input } from '@angular/core';
 import { Recipe } from '../../interfaces/recipe';
 import { Router } from '@angular/router';
+import { DescriptionSlicePipe } from '../../pipes/description-slice-pipe';
 
 @Component({
   selector: 'app-recipe',
-  imports: [],
+  imports: [DescriptionSlicePipe],
   templateUrl: './recipe.html',
   styleUrl: './recipe.css',
 })

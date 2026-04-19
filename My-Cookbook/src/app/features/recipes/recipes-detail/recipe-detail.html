@@ -1,16 +1,22 @@
 <main class="recipe-details">
   @if (recipe) {
     <div class="card">
-      <img [src]="recipe.imageUrl" [alt]="recipe.name" />
-      <h2>{{ recipe.name }}</h2>
-      <p>{{ recipe.description }}</p>
+      <div class="content">
+        <img [src]="recipe.imageUrl" [alt]="recipe.name" />
+        <h2>{{ recipe.name }}</h2>
+        <p>{{ recipe.description }}</p>
 
-      <h3>Ingredients</h3>
+        <h3>Ingredients</h3>
 
-      <p>{{ recipe.ingredients }}</p>
+        <p>{{ recipe.ingredients }}</p>
 
-      <h3>Instructions</h3>
-      <p>{{ recipe.instructions }}</p>
+        <h3>Instructions</h3>
+        <p>{{ recipe.instructions }}</p>
+      </div>
+      <div class="buttons-details">
+        <button class="edit-details">Edit</button>
+        <button class="delete-details" (click)="onDelete()">Delete</button>
+      </div>
     </div>
 
     <section class="comments">
@@ -20,9 +26,10 @@
         <div class="comment">
           <strong>{{ comment.username }}</strong>
           <p>{{ comment.text }}</p>
+          <p class="publishet-on">Published on: {{ comment.createdAt | dateFormat }}</p>
         </div>
       } @empty {
-        <p>No comments yet. Be the first!</p>
+        <p class="no-comments">No comments yet. Be the first!</p>
       }
 
       <form (ngSubmit)="postComment()">

@@ -17,6 +17,7 @@
             name="username"
             placeholder=" "
             formControlName="username"
+            autocomplete="username"
             required
           />
           <label for="username">Username</label>
@@ -38,6 +39,7 @@
             name="email"
             placeholder=" "
             formControlName="email"
+            autocomplete="email"
             required
           />
           <label for="email">Email</label>
@@ -47,37 +49,41 @@
           <p class="error">Email is not valid!</p>
         }
 
-        <div class="field">
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder=" "
-            formControlName="password"
-            [class.input-error]="passwordsGroup.invalid && passwordsGroup.touched"
-            required
-          />
-          <label for="password">Password</label>
-        </div>
+        <ng-container formGroupName="passwords">
+          <div class="field">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder=" "
+              formControlName="password"
+              [class.input-error]="passwordsGroup.invalid && passwordsGroup.touched"
+              autocomplete="new-password"
+              required
+            />
+            <label for="password">Password</label>
+          </div>
 
-        @if (passwordsGroup.get('password')?.touched && passwordsGroup.get('password')?.invalid) {
-          <p class="error">Password must be at least 5 characters!</p>
-        }
-
-        <div class="field">
-          <input
-            type="password"
-            id="confirmPass"
-            name="confirmPass"
-            placeholder=" "
-            formControlName="confirmPass"
-            [class.input-error]="passwordsGroup.invalid && passwordsGroup.touched"
-          />
-          <label for="confirmPass">Confirm Password</label>
-          @if (passwordsGroup.touched && passwordsGroup.errors?.['passwordMismatch']) {
-            <p class="error">Passwords do not match!</p>
+          @if (passwordsGroup.get('password')?.touched && passwordsGroup.get('password')?.invalid) {
+            <p class="error">Password must be at least 5 characters!</p>
           }
-        </div>
+
+          <div class="field">
+            <input
+              type="password"
+              id="confirmPass"
+              name="confirmPass"
+              placeholder=" "
+              formControlName="confirmPass"
+              autocomplete="new-password"
+              [class.input-error]="passwordsGroup.invalid && passwordsGroup.touched"
+            />
+            <label for="confirmPass">Confirm Password</label>
+            @if (passwordsGroup.touched && passwordsGroup.errors?.['passwordMismatch']) {
+              <p class="error">Passwords do not match!</p>
+            }
+          </div>
+        </ng-container>
 
         @if (registerForm.invalid && registerForm.touched) {
           <p class="error">You can't continue until you provide valid data!</p>

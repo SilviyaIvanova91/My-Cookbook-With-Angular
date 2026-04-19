@@ -6,5 +6,7 @@ router.get("/", recipeController.getRecipes);
 router.get("/:recipeId", recipeController.getRecipeById);
 router.post("/:recipeId/comments", recipeController.addComment);
 router.post("/", recipeController.createRecipe);
+router.patch("/:recipeId", recipeController.updateRecipe);
+router.delete("/:recipeId", recipeController.deleteRecipe);
 
 module.exports = router;

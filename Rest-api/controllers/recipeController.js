@@ -42,6 +42,42 @@ function createRecipe(req, res, next) {
     .then((recipe) => res.status(201).json(recipe))
     .catch(next);
 }
+function updateRecipe(req, res, next) {
+  const { recipeId } = req.params;
+  const { name, description, ingredients, instructions, imageUrl } = req.body;
+
+  if (!name || !description || !instructions || !imageUrl) {
+    return res.status(400).json({ message: "All recipe fields are required" });
+  }
+
+  recipeModel
+    .findByIdAndUpdate(
+      recipeId,
+      { name, description, ingredients, instructions, imageUrl },
+      { new: true, runValidators: true },
+    )
+    .then((updatedRecipe) => {
+      if (!updatedRecipe) {
+        return res.status(404).json({ message: "Recipe not found" });
+      }
+      res.status(200).json(updatedRecipe);
+    })
+    .catch(next);
+}
+
+function deleteRecipe(req, res, next) {
+  const { recipeId } = req.params;
+
+  recipeModel
+    .findByIdAndDelete(recipeId)
+    .then((deletedRecipe) => {
+      if (!deletedRecipe) {
+        return res.status(404).json({ message: "Recipe not found" });
+      }
+      res.status(200).json({ message: "Recipe deleted successfully" });
+    })
+    .catch(next);
+}
 
 function addComment(req, res, next) {
   const { recipeId } = req.params;
@@ -72,4 +108,6 @@ module.exports = {
   getRecipeById,
   addComment,
   createRecipe,
+  updateRecipe,
+  deleteRecipe,
 };

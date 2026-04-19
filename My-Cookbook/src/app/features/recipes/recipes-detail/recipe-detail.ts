@@ -6,10 +6,11 @@ import { ApiService } from '../../../core/services/api.service';
 import { AuthService } from '../../../core/services/auth';
 import { Recipe } from '../../../shared/interfaces/recipe';
 import { Comment } from '../../../shared/interfaces/comments';
+import { DateFormatPipe } from '../../../shared/pipes/date-format-pipe';
 
 @Component({
   selector: 'app-recipe-detail',
-  imports: [FormsModule],
+  imports: [FormsModule, DateFormatPipe],
   templateUrl: './recipe-detail.html',
   styleUrl: './recipe-detail.css',
 })
@@ -34,6 +35,17 @@ export class RecipeDetailComponent implements OnInit {
     this.apiService.getRecipeById(this.recipeId).subscribe({
       next: (recipe) => {
         this.recipe = recipe;
+      },
+      error: () => {
+        this.router.navigate(['/not-found'], { queryParams: { from: 'invalid-recipe' } });
+      },
+    });
+  }
+
+  onDelete(): void {
+    this.apiService.deleteRecipe(this.recipeId).subscribe({
+      next: () => {
+        this.router.navigate(['/recipes'], { queryParams: { deleted: 'true' } });
       },
       error: () => {
         this.router.navigate(['/not-found'], { queryParams: { from: 'invalid-recipe' } });

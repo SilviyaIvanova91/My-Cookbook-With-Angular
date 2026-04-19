@@ -19,3 +19,11 @@ export interface CreateRecipeData {
   instructions: string;
   imageUrl: string;
 }
+
+export interface UpdateRecipeData {
+  name: string;
+  description: string;
+  ingredients: string;
+  instructions: string;
+  imageUrl: string;
+}

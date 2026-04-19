@@ -7,8 +7,6 @@
 .card {
   width: 550px;
   height: fit-content;
-  display: flex;
-  align-items: flex-start;
   margin: 0 auto 30px;
   background: #ffffff;
   border-radius: 16px;
@@ -100,6 +98,12 @@ textarea:focus {
   outline: none;
 }
 
+.no-comments {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+}
+
 button {
   margin-top: 10px;
   padding: 10px;
@@ -125,6 +129,73 @@ button:active {
 button:disabled {
   background: #ccc;
   cursor: not-allowed;
+}
+
+.publishet-on {
+  font-size: 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.buttons-details {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.buttons-details button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.edit-details {
+  background: linear-gradient(135deg, #4caf50, #81c784);
+  color: white;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.edit-details:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 16px rgba(76, 175, 80, 0.45);
+}
+
+.delete-details {
+  background: linear-gradient(135deg, #f44336, #e57373);
+  color: white;
+  box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+}
+
+.delete-details:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 16px rgba(244, 67, 54, 0.45);
+}
+
+.buttons-details button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.buttons-details button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: 0.5s;
+}
+
+.buttons-details button:hover::after {
+  left: 125%;
 }
 
 @media (max-width: 640px) {
