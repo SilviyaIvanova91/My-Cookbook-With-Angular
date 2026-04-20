@@ -88,50 +88,50 @@ The goal of this recipe site is to help people discover, learn, and successfully
 
 ---
 <h3> Project Architecture </h3>
-   - core/guards
-   - core/interceptors
-   - core/services
-   - core/store
-   - features/auth/login component
-   - features/auth/register component
-   - features/home component
-   - features/my-profile component
-   - features/not-found component
-   - features/recipes component
-   - features/recipes/delete-recipe component
-   - features/recipes/edit-recipe component
-   - features/recipes/new-recipe component
-   - features/recipes/recipe-detail component
-   - features/recipes/recipes-list component
-   - layout/foother component
-   - layout/header component
-   - shared/components
-   - shared/directives
-   - shared/interfaces
-   - shared/pipes
-   - shared/validators
+- core/guards
+- core/interceptors
+- core/services
+- core/store
+- features/auth/login component
+- features/auth/register component
+- features/home component
+- features/my-profile component
+- features/not-found component
+- features/recipes component
+- features/recipes/delete-recipe component
+- features/recipes/edit-recipe component
+- features/recipes/new-recipe component
+- features/recipes/recipe-detail component
+- features/recipes/recipes-list component
+- layout/foother component
+- layout/header component
+- shared/components
+- shared/directives
+- shared/interfaces
+- shared/pipes
+- shared/validators
 
 ---
 <h3> Technologies Used </h3>
-   - Angular
-   - TypeScript
-   - RxJs
-   - REST API
-   - CSS
+- Angular
+- TypeScript
+- RxJs
+- REST API
+- CSS
 
 ---
 <h3> How to Run the Project </h3>
-   1. Clone the repository
-   2. cd My-Cookbook
-   3. npm install
-   4. npm install @ngrx/store 
-   5. npm start
-   6. Open new terminal
-   7. cd Rest-api
-   8. npm install
-   9. npm start
-   10. Open the application
-      -> http://localhost:4200
+1. Clone the repository
+2. cd My-Cookbook
+3. npm install
+4. npm install @ngrx/store 
+5. npm start
+6. Open new terminal
+7. cd Rest-api
+8. npm install
+9. npm start
+10. Open the application
+    -> http://localhost:4200
 
 ---
 <h3> Preview: </h3>
