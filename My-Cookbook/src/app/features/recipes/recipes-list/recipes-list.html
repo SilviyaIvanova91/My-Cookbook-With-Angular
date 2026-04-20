@@ -10,9 +10,16 @@
   <div class="recipes">
     @if (isLoading$ | async) {
       <p>Loading recipes...</p>
-    }
-    @for (recipe of recipes$ | async; track recipe._id) {
-      <app-recipe [recipe]="recipe" />
+    } @else {
+      @if (recipes$ | async; as recipes) {
+        @if (recipes.length === 0) {
+          <p class="empty-recipes-message">Not have Recipes yet</p>
+        } @else {
+          @for (recipe of recipes; track recipe._id) {
+            <app-recipe [recipe]="recipe" />
+          }
+        }
+      }
     }
   </div>
 </div>
