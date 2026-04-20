@@ -21,6 +21,7 @@ The goal of this recipe site is to help people discover, learn, and successfully
   - Can post comment with their username
   - Can view their own Profile Page
   - Can edit their own Profile Page
+
 ---
 <h3> Public Features </h3>
   - Home page 
@@ -76,11 +77,21 @@ The goal of this recipe site is to help people discover, learn, and successfully
    - text
    - createdAt
 
+- Notification
+   - message
+   - type
+
+- Recipe State
+   - recipes
+   - isLoading
+   - error
+
 ---
 <h3> Project Architecture </h3>
    - core/guards
    - core/interceptors
    - core/services
+   - core/store
    - features/auth/login component
    - features/auth/register component
    - features/home component
@@ -113,12 +124,13 @@ The goal of this recipe site is to help people discover, learn, and successfully
    1. Clone the repository
    2. cd My-Cookbook
    3. npm install
-   4. npm start
-   5. Open new terminal
-   6. cd Rest-api
-   7. npm install
-   8. npm start
-   9. Open the application
+   4. npm install @ngrx/store 
+   5. npm start
+   6. Open new terminal
+   7. cd Rest-api
+   8. npm install
+   9. npm start
+   10. Open the application
       -> http://localhost:4200
 
 ---

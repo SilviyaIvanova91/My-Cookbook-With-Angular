@@ -8,7 +8,10 @@
   }
   <h1 class="h-recipes">Recipes</h1>
   <div class="recipes">
-    @for (recipe of recipes; track recipe._id) {
+    @if (isLoading$ | async) {
+      <p>Loading recipes...</p>
+    }
+    @for (recipe of recipes$ | async; track recipe._id) {
       <app-recipe [recipe]="recipe" />
     }
   </div>

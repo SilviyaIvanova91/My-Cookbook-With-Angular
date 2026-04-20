@@ -6,11 +6,11 @@
 
     <img
       class="recipe-img"
-      [src]="recipe?.imageUrl || 'https://via.placeholder.com/400x200'"
-      [alt]="recipe?.name || 'Recipe Image'"
+      [src]="recipe.imageUrl || 'https://via.placeholder.com/400x200'"
+      [alt]="recipe.name || 'Recipe Image'"
     />
 
-    <div class="recipe-name">{{ recipe?.name }}</div>
+    <div class="recipe-name">{{ recipe.name }}</div>
 
     <div class="message">Are you sure you want to delete this recipe?</div>
 
