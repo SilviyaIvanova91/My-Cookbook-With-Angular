@@ -6,6 +6,7 @@ The goal of this recipe site is to help people discover, learn, and successfully
 
 ---
 <h3> User Roles </h3>
+
 - Guest (Not Authenticated User)
   - Can view the home page
   - Can view the catalog
@@ -24,6 +25,7 @@ The goal of this recipe site is to help people discover, learn, and successfully
 
 ---
 <h3> Public Features </h3>
+
   - Home page 
   - Catalog page -> Show all recipes
   - Details page -> Show information for recipe - name, description, ingredients, instruction and picture. 
@@ -40,6 +42,7 @@ The goal of this recipe site is to help people discover, learn, and successfully
 
 ---
 <h3> Application Flow </h3>
+
   1. User opens the Home Page
   2. User navigate to the catalog Page
   3. User select a recipe and open Details Page
@@ -53,6 +56,7 @@ The goal of this recipe site is to help people discover, learn, and successfully
 
 ---
 <h3> Data Structure </h3>
+
 - Recipe
    - _id
    - name
