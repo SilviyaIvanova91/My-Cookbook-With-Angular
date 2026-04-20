@@ -87,6 +87,7 @@ The goal of this recipe site is to help people discover, learn, and successfully
    - features/my-profile component
    - features/not-found component
    - features/recipes component
+   - features/recipes/delete-recipe component
    - features/recipes/edit-recipe component
    - features/recipes/new-recipe component
    - features/recipes/recipe-detail component
@@ -149,6 +150,9 @@ The goal of this recipe site is to help people discover, learn, and successfully
 
 ### Edit Page - Only for Owner of recipes
 ![Edit](https://raw.githubusercontent.com/SilviyaIvanova91/My-Cookbook-With-Angular/main/cookbook-site-in-picture/editRecipePage.jpg)
+
+### Delete Page - Only for Owner of recipes
+![Edit](https://raw.githubusercontent.com/SilviyaIvanova91/My-Cookbook-With-Angular/main/cookbook-site-in-picture/deletePage.jpg)
 
 ### My Profile Page
 ![MyProfile](https://raw.githubusercontent.com/SilviyaIvanova91/My-Cookbook-With-Angular/main/cookbook-site-in-picture/myProfilePage.jpg)

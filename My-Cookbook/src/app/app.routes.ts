@@ -31,6 +31,12 @@ export const routes: Routes = [
       import('./features/recipes/edit-recipe/edit-recipe').then((m) => m.EditRecipeComponent),
     canActivate: [authGuard],
   },
+  {
+    path: 'recipes/:recipeId/delete',
+    loadComponent: () =>
+      import('./features/recipes/delete-recipe/delete-recipe').then((m) => m.DeleteRecipeComponent),
+    canActivate: [authGuard],
+  },
 
   {
     path: 'register',

@@ -1,0 +1,75 @@
+.delete-page {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f172b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.modal {
+  background: #fff;
+  width: 400px;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 10px 30px #0f172b;
+  text-align: center;
+}
+
+.modal h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.recipe-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.recipe-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #444;
+}
+
+.message {
+  margin: 10px 0 20px;
+  color: #666;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.cancel {
+  background: #ddd;
+}
+
+.delete {
+  background: #e74c3c;
+  color: white;
+}
+
+.cancel:hover {
+  background: #ccc;
+}
+
+.delete:hover {
+  background: #c0392b;
+}

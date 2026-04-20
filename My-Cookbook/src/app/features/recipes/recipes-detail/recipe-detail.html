@@ -17,7 +17,7 @@
         <button class="cancel-details" (click)="onCancel()">Go Back</button>
         @if (isRecipeOwner()) {
           <button class="edit-details" (click)="goToEditMode(recipe._id)">Edit</button>
-          <button class="delete-details" (click)="onDelete()">Delete</button>
+          <button class="delete-details" (click)="goToDeleteMode(recipe._id)">Delete</button>
         }
       </div>
     </div>

@@ -59,19 +59,12 @@ export class RecipeDetailComponent implements OnInit {
     this.router.navigate([`recipes/${recipeId}/edit`]);
   }
 
-  onDelete(): void {
+  goToDeleteMode(recipeId: string): void {
     if (!this.isRecipeOwner()) {
       return;
     }
 
-    this.apiService.deleteRecipe(this.recipeId).subscribe({
-      next: () => {
-        this.router.navigate(['/recipes'], { queryParams: { deleted: 'true' } });
-      },
-      error: () => {
-        this.router.navigate(['/not-found'], { queryParams: { from: 'invalid-recipe' } });
-      },
-    });
+    this.router.navigate([`recipes/${recipeId}/delete`]);
   }
 
   onCancel(): void {
