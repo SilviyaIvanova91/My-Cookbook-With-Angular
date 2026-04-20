@@ -25,7 +25,8 @@ The goal of this recipe site is to help people discover, learn, and successfully
 
 ---
 <h3> Public Features </h3>
-
+	
+- Not Authenticated User Features
   - Home page 
   - Catalog page -> Show all recipes
   - Details page -> Show information for recipe - name, description, ingredients, instruction and picture. 
@@ -53,6 +54,10 @@ The goal of this recipe site is to help people discover, learn, and successfully
   8. Authenticated user, who create recipe, can make changes or delete a recipe records
   9. User navigate to personal dashboard
   10. User can update his personal information
+
+- When user logged in, register, create, edit, delete or other action, in bottom show message for success or error.
+- When a field is not filled in correctly, an error message appears
+ 
 
 ---
 <h3> Data Structure </h3>
