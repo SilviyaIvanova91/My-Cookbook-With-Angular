@@ -126,27 +126,32 @@ The goal of this recipe site is to help people discover, learn, and successfully
 ### Home Page
 ![Home](https://raw.githubusercontent.com/SilviyaIvanova91/My-Cookbook-With-Angular/main/cookbook-site-in-picture/homePageNotAuth.jpg)
 
-
 ### Login Page
-![Login](https://raw.githubusercontent.com/SilviyaIvanova91/pet-shelter-with-react/master/screenshots/loginPage.jpg)
+![Login](https://raw.githubusercontent.com/SilviyaIvanova91/My-Cookbook-With-Angular/main/cookbook-site-in-picture/loginPage.jpg)
 
 ### Register Page
-![Register](https://raw.githubusercontent.com/SilviyaIvanova91/pet-shelter-with-react/master/screenshots/registerPage.jpg)
+![Register](https://raw.githubusercontent.com/SilviyaIvanova91/My-Cookbook-With-Angular/main/cookbook-site-in-picture/registerPage.jpg)
 
-### Create Page
-![Create](https://raw.githubusercontent.com/SilviyaIvanova91/pet-shelter-with-react/master/screenshots/createPage.jpg)
+### Catalog Page - Not Authenticated User
+![Catalog-Not-Auth](https://raw.githubusercontent.com/SilviyaIvanova91/My-Cookbook-With-Angular/main/cookbook-site-in-picture/recipeCatalog.jpg)
 
-### Catalog Page
-![Catalog](https://raw.githubusercontent.com/SilviyaIvanova91/pet-shelter-with-react/master/screenshots/catalogPage.jpg)
+### Catalog Page - Authenticated User
+![Catalog-Auth](https://raw.githubusercontent.com/SilviyaIvanova91/My-Cookbook-With-Angular/main/cookbook-site-in-picture/catalogPageAuth.jpg)
 
-### Details Page
-![Details](https://raw.githubusercontent.com/SilviyaIvanova91/pet-shelter-with-react/master/screenshots/detailsPage.jpg)
+### Details Page - Not Authenticated User
+![Details-Not-Auth](https://raw.githubusercontent.com/SilviyaIvanova91/My-Cookbook-With-Angular/main/cookbook-site-in-picture/detailsPageNotAuth.jpg)
 
-### Edit Page
-![Edit](https://raw.githubusercontent.com/SilviyaIvanova91/pet-shelter-with-react/master/screenshots/editPage.jpg)
+### Details Page - Only for Owner of recipe
+![Details-Owner](https://raw.githubusercontent.com/SilviyaIvanova91/My-Cookbook-With-Angular/main/cookbook-site-in-picture/DetailsPageAuthOwner.jpg)
 
-### Delete Page
-![Delete](https://raw.githubusercontent.com/SilviyaIvanova91/pet-shelter-with-react/master/screenshots/deletePage.jpg)
+### Create Page - Only for Authenticated Users
+![Create](https://raw.githubusercontent.com/SilviyaIvanova91/My-Cookbook-With-Angular/main/cookbook-site-in-picture/addNewRecipePage.jpg)
+
+### Edit Page - Only for Owner of recipes
+![Edit](https://raw.githubusercontent.com/SilviyaIvanova91/My-Cookbook-With-Angular/main/cookbook-site-in-picture/editRecipePage.jpg)
 
 ### My Profile Page
-![MyProfile](https://raw.githubusercontent.com/SilviyaIvanova91/pet-shelter-with-react/master/screenshots/myProfilePage.jpg)
+![MyProfile](https://raw.githubusercontent.com/SilviyaIvanova91/My-Cookbook-With-Angular/main/cookbook-site-in-picture/myProfilePage.jpg)
+
+### Upload My Profile Page
+![MyProfile-Upload](https://github.com/SilviyaIvanova91/My-Cookbook-With-Angular/raw/main/cookbook-site-in-picture/editMyProfilePage.jpg)
