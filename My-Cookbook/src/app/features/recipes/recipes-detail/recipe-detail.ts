@@ -74,6 +74,10 @@ export class RecipeDetailComponent implements OnInit {
     });
   }
 
+  onCancel(): void {
+    this.router.navigate(['/recipes']);
+  }
+
   postComment(): void {
     const text = this.commentText.trim();
     if (!text || !this.recipe) return;

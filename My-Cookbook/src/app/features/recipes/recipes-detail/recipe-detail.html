@@ -13,12 +13,13 @@
         <h3>Instructions</h3>
         <p>{{ recipe.instructions }}</p>
       </div>
-      @if (isRecipeOwner()) {
-        <div class="buttons-details">
+      <div class="buttons-details">
+        <button class="cancel-details" (click)="onCancel()">Go Back</button>
+        @if (isRecipeOwner()) {
           <button class="edit-details" (click)="goToEditMode(recipe._id)">Edit</button>
           <button class="delete-details" (click)="onDelete()">Delete</button>
-        </div>
-      }
+        }
+      </div>
     </div>
 
     <section class="comments">
