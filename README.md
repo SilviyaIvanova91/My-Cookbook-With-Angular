@@ -57,6 +57,9 @@ The goal of this recipe site is to help people discover, learn, and successfully
 
 - When user logged in, register, create, edit, delete or other action, in bottom show message for success or error.
 - When a field is not filled in correctly, an error message appears
+
+
+- When user download and start the project, there is a possibility, that the database is reset. If it is empty, you must create a new recipe record. First user must logged in and after that, in Recipe Page, using the Create button, must add new recipe record.
  
 
 ---
@@ -143,6 +146,7 @@ The goal of this recipe site is to help people discover, learn, and successfully
 8. npm start
 9. Open the application
     -> http://localhost:4200
+
 
 ---
 <h3> Preview: </h3>
