@@ -123,13 +123,9 @@ The goal of this recipe site is to help people discover, learn, and successfully
 ---
 <h3> Preview: </h3>
 
-
-
-
-
-
 ### Home Page
-![Home](https://raw.githubusercontent.com/SilviyaIvanova91/pet-shelter-with-react/master/screenshots/homePage.jpg)
+![Home](https://raw.githubusercontent.com/SilviyaIvanova91/My-Cookbook-With-Angular/main/cookbook-site-in-picture/homePageNotAuth.jpg)
+
 
 ### Login Page
 ![Login](https://raw.githubusercontent.com/SilviyaIvanova91/pet-shelter-with-react/master/screenshots/loginPage.jpg)
